@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>VSSTinyCryptor Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">VirgilFoundation </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Virgil Security, Inc.</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/packageSize">packageSize</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/addPackage:error:">- addPackage:error:</option>
+		
+		<option value="//api/name/decryptWithRecipientPrivateKey:recipientKeyPassword:error:">- decryptWithRecipientPrivateKey:recipientKeyPassword:error:</option>
+		
+		<option value="//api/name/encryptAndSignData:recipientPublicKey:senderPrivateKey:senderKeyPassword:error:">- encryptAndSignData:recipientPublicKey:senderPrivateKey:senderKeyPassword:error:</option>
+		
+		<option value="//api/name/encryptData:recipientPublicKey:error:">- encryptData:recipientPublicKey:error:</option>
+		
+		<option value="//api/name/initWithPackageSize:">- initWithPackageSize:</option>
+		
+		<option value="//api/name/packageAtIndex:error:">- packageAtIndex:error:</option>
+		
+		<option value="//api/name/packageCount">- packageCount</option>
+		
+		<option value="//api/name/packagesAccumulated">- packagesAccumulated</option>
+		
+		<option value="//api/name/resetWithError:">- resetWithError:</option>
+		
+		<option value="//api/name/verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:">- verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">VSSTinyCryptor Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>VSSTinyCryptor.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This class aim is to minimize encryption output.</p>
+
+<p>Motivation: If encrypted data is transmitted over GSM module, it very important that encryption output was as small as possible.</p>
+
+<p>Solution: Throw out crypto agility and transfer minimum public information required for decryption.</p>
+
+<p>Pros:
+- Tiny messages.</p>
+
+<p>Cons:
+- Crypto agility is not included in the message, so encrypted messages should not be stored for a long term.</p>
+
+<p>Details:
+During encryption ciper packs encrypted message and service information to the set of packages,
+which length is limited by maximim package length.</p>
+
+<p>Restrictions:
+Currently supported public/private keys:
+- Curve25519</p>
+
+<p>Minimum package length:
+- 113 bytes</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/packageSize" title="packageSize"></a>
+	<h3 class="method-title"><code><a href="#//api/name/packageSize">&nbsp;&nbsp;packageSize</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Maximum number of bytes in one package.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) size_t packageSize</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Lifecycle" name="task_Lifecycle"></a>
+						<h2 class="task-title">Lifecycle</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithPackageSize:" title="initWithPackageSize:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPackageSize:">&ndash;&nbsp;initWithPackageSize:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Init cipher with given maximum package size.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype __nonnull)initWithPackageSize:(VSSPackageSize)<em>packageSize</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>packageSize</code></th>
+						<td><p>Maximum number of bytes in one package</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Instance of the <code>TinyCryptor</code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resetWithError:" title="resetWithError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resetWithError:">&ndash;&nbsp;resetWithError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Prepare cryptor for the next encryption.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)resetWithError:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p>
+
+<p><strong>Note:</strong> should be used before the next encryption.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Encryption" name="task_Encryption"></a>
+						<h2 class="task-title">Encryption</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/encryptData:recipientPublicKey:error:" title="encryptData:recipientPublicKey:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encryptData:recipientPublicKey:error:">&ndash;&nbsp;encryptData:recipientPublicKey:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Encrypts data with given public key</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)encryptData:(NSData *__nonnull)<em>data</em> recipientPublicKey:(NSData *__nonnull)<em>recipientKey</em> error:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>data</code></th>
+						<td><p>Data to be encrypted.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>recipientKey</code></th>
+						<td><p>Recipient&rsquo;s public key</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><code>YES</code> in case when encryption was successful, <code>NO</code> - otherwise.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p>&lsquo;<a href="#//api/name/packageAtIndex:error:">[VSSTinyCryptor packageAtIndex:error:]</a>&rsquo;</p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encryptAndSignData:recipientPublicKey:senderPrivateKey:senderKeyPassword:error:" title="encryptAndSignData:recipientPublicKey:senderPrivateKey:senderKeyPassword:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encryptAndSignData:recipientPublicKey:senderPrivateKey:senderKeyPassword:error:">&ndash;&nbsp;encryptAndSignData:recipientPublicKey:senderPrivateKey:senderKeyPassword:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Encrypts data with given public key and composes a signature on the data.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)encryptAndSignData:(NSData *__nonnull)<em>data</em> recipientPublicKey:(NSData *__nonnull)<em>recipientKey</em> senderPrivateKey:(NSData *__nonnull)<em>senderKey</em> senderKeyPassword:(NSString *__nullable)<em>keyPassword</em> error:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>data</code></th>
+						<td><p>Data to be encrypted</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>recipientKey</code></th>
+						<td><p>Recipient&rsquo;s public key to encrypt data with.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>senderKey</code></th>
+						<td><p>Sender&rsquo;s private key for signature composition</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyPassword</code></th>
+						<td><p>Sender&rsquo;s private key password, might be <code>nil</code>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><code>YES</code> in case when encryption/signing was successful. <code>NO</code> - otherwise</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/packageCount" title="packageCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/packageCount">&ndash;&nbsp;packageCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns total package count available after encryption process.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (size_t)packageCount</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong> Package count is known only when encryption process is completed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/packageAtIndex:error:" title="packageAtIndex:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/packageAtIndex:error:">&ndash;&nbsp;packageAtIndex:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Gets the package at the given index.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSData *__nullable)packageAtIndex:(size_t)<em>index</em> error:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>index</code></th>
+						<td><p>Necessary package&rsquo;s index.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>NSData object with requested package or <code>nil</code> in case of error.</p>
+
+<p><strong>Note:</strong> Package count is known only when encryption process is completed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Decryption" name="task_Decryption"></a>
+						<h2 class="task-title">Decryption</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/addPackage:error:" title="addPackage:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addPackage:error:">&ndash;&nbsp;addPackage:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Adds a package for the decryption.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)addPackage:(NSData *__nonnull)<em>package</em> error:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>package</code></th>
+						<td><p>Data object with package content to be accumulated.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><code>YES</code> if package was accumulated successfully, <code>NO</code> - otherwise.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Packages added using this function become accumulated for later calls to
+- <a href="#//api/name/decryptWithRecipientPrivateKey:recipientKeyPassword:error:"><code>[VSSTinyCryptor decryptWithRecipientPrivateKey:recipientKeyPassword:error:]</code></a> or
+- <a href="#//api/name/verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:"><code>[VSSTinyCryptor verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:]</code></a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/packagesAccumulated" title="packagesAccumulated"></a>
+	<h3 class="method-title"><code><a href="#//api/name/packagesAccumulated">&ndash;&nbsp;packagesAccumulated</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Defines whether all packages was accumulated or not.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)packagesAccumulated</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><code>YES</code> if all packages was successfully accumulated, <code>NO</code> - otherwise.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/decryptWithRecipientPrivateKey:recipientKeyPassword:error:" title="decryptWithRecipientPrivateKey:recipientKeyPassword:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/decryptWithRecipientPrivateKey:recipientKeyPassword:error:">&ndash;&nbsp;decryptWithRecipientPrivateKey:recipientKeyPassword:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Decrypts accumulated packages.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSData *__nullable)decryptWithRecipientPrivateKey:(NSData *__nonnull)<em>recipientKey</em> recipientKeyPassword:(NSString *__nullable)<em>keyPassword</em> error:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>recipientKey</code></th>
+						<td><p>Recipient&rsquo;s private key.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyPassword</code></th>
+						<td><p>Recipient&rsquo;s private key password, might be <code>nil</code>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Decrypted data if decryption has been successful or <code>nil</code> in case of error.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:" title="verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:">&ndash;&nbsp;verifyAndDecryptWithSenderPublicKey:recipientPrivateKey:recipientKeyPassword:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Verifies accumulated packages and then decrypts them.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSData *__nullable)verifyAndDecryptWithSenderPublicKey:(NSData *__nonnull)<em>senderKey</em> recipientPrivateKey:(NSData *__nonnull)<em>recipientKey</em> recipientKeyPassword:(NSString *__nullable)<em>keyPassword</em> error:(NSError *__nullable *__nullable)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>senderKey</code></th>
+						<td><p>Sender&rsquo;s public key for signature verification.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>recipientKey</code></th>
+						<td><p>Recipient&rsquo;s private key for the data decryption.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyPassword</code></th>
+						<td><p>Recipient&rsquo;s private key password, might be <code>nil</code>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError pointer to get an object in case of error, <code>nil</code> - otherwise.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Decrypted data if decryption has been successful or <code>nil</code> in case of error of decryption or signature verification.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VSSTinyCryptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Virgil Security, Inc. All rights reserved. Updated: 2016-07-18</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
